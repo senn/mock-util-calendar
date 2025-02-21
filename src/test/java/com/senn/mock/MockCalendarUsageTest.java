@@ -19,6 +19,7 @@ class MockCalendarUsageTest {
     })
     void testMockCalendar_currentDay(final String year, final String month, final String day,
                                      final String hours, final String minutes, final String seconds) {
+        // Simple unit test that checks if a mocked calendar is correctly returned
         Calendar result = withMockCalendar(
                 toInt(year),
                 toInt(month),
@@ -44,6 +45,8 @@ class MockCalendarUsageTest {
     })
     void testMockCalendar_calendarDependentLogic(final String year, final String month, final String day,
                                                  final String dayWord, final String monthWord, final String yearWord) {
+        // Test where a String is created based on various calendar operations
+        // We're checking that the mocked calendar behaves like real calendar but with the provided values
         String result = withMockCalendar(
                 toInt(year),
                 toInt(month),
@@ -56,7 +59,9 @@ class MockCalendarUsageTest {
         return Integer.parseInt(input);
     }
 
-    //methods with logic to verify
+    ///////////////////////////////
+    // Methods with logic to simulate application code that performs actions with a Calendar.getInstance().
+    // In a real scenario, this would be application code in a class that is being tested.
 
     private Calendar getCurrentDayCalendar() {
         return Calendar.getInstance();
@@ -72,6 +77,9 @@ class MockCalendarUsageTest {
         String year = calendar.get(Calendar.YEAR) + "";
         return String.format(FORMAT, day, month, year);
     }
+
+    ///////////////////////////////
+    // Util methods
 
     private static String getDayWord(int day) {
         switch (day) {
